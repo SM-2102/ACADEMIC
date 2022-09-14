@@ -59,7 +59,8 @@ for i in sorted(dict.keys()):
     print(i , dict[i])
 
 dict2 = {7:'weird',1:'wow'}
-print(dict|dict2)
+dict3 = {**dict, **dict2}
+print(dict3)
 
 print(dict.pop(2,'Not Found'))
 
