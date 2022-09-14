@@ -1,5 +1,12 @@
 #include <stdio.h>
 
+void swap(int *x,int *y)
+{
+	int temp = *x;
+	*x=*y;
+	*y=temp;
+}
+
 int partition(int a[],int p, int r)
 {
 	int x = a[r];
@@ -8,13 +15,9 @@ int partition(int a[],int p, int r)
 		if(a[j]<=x)
 		{
 			i=i+1;
-			int temp = a[i];
-			a[i] = a[j];
-			a[j] = temp;
+			swap(&a[i],&a[j]);
 		}
-	int temp = a[i+1];
-	a[i+1] = a[r];
-	a[r] = temp;
+	swap(&a[i+1],&a[r]);
 	return i+1;
 }
 
