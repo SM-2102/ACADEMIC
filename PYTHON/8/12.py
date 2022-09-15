@@ -11,7 +11,7 @@ for i in range(1,15):
         if(i%j==0):
             c=1
             break
-        if(c==0):
+    if(c==0):
             prime.add(i)
 print('The union :',(odd | prime))
 print('The intersection :',(odd & prime))
