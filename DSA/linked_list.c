@@ -15,6 +15,7 @@ struct node
 };
 
 struct node *start = NULL;
+
 struct node *create_list(struct node *start)
 {
 	struct node *new_node, *ptr;
