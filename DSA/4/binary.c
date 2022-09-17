@@ -1,3 +1,5 @@
+// binary search with and without recursion
+
 #include<stdio.h>
 
 int binary(int a[20],int lp, int up,int num)
