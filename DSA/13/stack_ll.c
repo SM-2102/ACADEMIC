@@ -75,7 +75,7 @@ void display()
 		printf("Stack Empty.\n");
 		return;
 	}
-	printf("The linked list : ");
+	printf("The stack : ");
 	while(ptr!=NULL)
 	{
 		printf("%d ",ptr->data);
