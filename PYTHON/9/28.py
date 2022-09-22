@@ -6,9 +6,7 @@ def av(lst):
 def med(lst):
     length= len(lst)
     if length % 2 == 0:
-        med1 = lst[n//2]
-        med2 = lst[n//2 - 1]
-        medi= (med1 + med2)/2
+        medi= (lst[n//2] + lst[n//2 - 1])/2
     else:
         medi = lst[n//2]
     return medi
