@@ -22,3 +22,5 @@ while True:
     dict={'+':add(),'-':sub(),'*':mul(),'/':div(),'^':exp()}
     if o in dict.keys():
         print(dict[o])
+    else:
+        break
