@@ -1,10 +1,6 @@
 # average, median, mode from 1 to n
 
-from statistics import median
-
-
 def av(lst):
-    length=len(lst)
     return sum(lst)/len(lst)
 
 def med(lst):
