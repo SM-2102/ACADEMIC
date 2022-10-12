@@ -120,7 +120,7 @@ void in_to_post(char infix[], char postfix[])
 int main()
 {
 	char infix[25],postfix[25];
-	printf("Enter the infix empression : \n");
+	printf("Enter the infix expression : \n");
 	scanf("%s",infix);
 	in_to_post(infix,postfix);
 	printf("The postix expression : \n%s\n",postfix);
