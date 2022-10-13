@@ -1,6 +1,7 @@
 # volume of box
 
 def vol(lst):
+    ans=1
     for i in lst:
         ans= ans*i
     return ans
