@@ -68,7 +68,8 @@ int eval_postfix(char exp[])
 					n3=n2^n1;
 					break;
 				case '%':
-					n3=n2%n1;
+					n = n2/n1;
+					n3 = n2 - (n1*n);
 					break;
 				deafult:
 					break;
