@@ -1,6 +1,6 @@
 # print the words written in first line
 
-readfile = open('files.txt','r')
+readfile = open('file1.txt','r')
 lines = readfile.readlines()
 
 for i in lines[0].split(' '):

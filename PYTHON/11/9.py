@@ -1,7 +1,7 @@
-# count the number of lines in file
+# count the number of words in file
 
 words=0
-with open('file.txt','r') as file:
+with open('file1.txt','r') as file:
     data = file.read()
     lines = data.split()
     words= words+ len(lines)

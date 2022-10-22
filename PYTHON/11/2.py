@@ -3,13 +3,13 @@
 # read first two lines
 # read first 5 characters
 
-writefile = open('file.txt','w')
+writefile = open('file1.txt','w')
 writefile.write('Some are born to Sweet Delight\n')
 writefile.write('Some are born to Endless Night\n')
 writefile.write('\t\t-Willian Blake\n')
 writefile.close()
 
-readfile = open('file.txt','r')
+readfile = open('file1.txt','r')
 data = readfile.read()
 print(data)
 readfile.seek(0)
