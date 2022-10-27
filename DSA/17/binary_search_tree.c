@@ -1,6 +1,6 @@
 /* menu driven program to implement tree
    1. insert a new node 
- ``2. delete a new node
+   2. delete a new node
    3. print in inorder
    4. print in postorder
    5. print in preorder  */
