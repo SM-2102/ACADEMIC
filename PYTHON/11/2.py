@@ -6,7 +6,7 @@
 writefile = open('file1.txt','w')
 writefile.write('Some are born to Sweet Delight\n')
 writefile.write('Some are born to Endless Night\n')
-writefile.write('\t\t-Willian Blake\n')
+writefile.write('\t\t-William Blake\n')
 writefile.close()
 
 readfile = open('file1.txt','r')
