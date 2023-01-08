@@ -156,8 +156,8 @@ def entry():
                                         variable=accept_var, onvalue=1, offvalue=0)
     terms_check.grid(row=0, column=0)
 
-    button = tkinter.Button(frame, text="Enter data", command= enter_data)
-    button.grid(row=3, column=0, sticky="news", padx=20, pady=10)
+    button = tkinter.Button(frame, text="Submit", command= enter_data,activebackground='#E6E6FA')
+    button.grid(row=3, column=0, padx=20, pady=10)
     
     window.mainloop()
 
@@ -213,7 +213,7 @@ def search():
         messagebox.showerror(title="Error", message="No Entries Found")
         window.destroy()
 
-    def search():
+    def search_data():
         category = categ.get()
         data = data_entered.get()
         if category == 'Name' or category=='Department':
@@ -257,7 +257,7 @@ def search():
     categ.grid(row=1,column=0,padx=10,pady=10)
     data_entered = tkinter.Entry(options,width=30)
     data_entered.grid(row=1, column=1,padx=10,pady=10)
-    btn_search = tkinter.Button(window, text="Search", width=10,activebackground = '#E6E6FA',justify='center',command=search)
+    btn_search = tkinter.Button(window, text="Search", width=10,activebackground = '#E6E6FA',justify='center',command=search_data)
     btn_search.grid(row=1, column=0,pady=10,padx=20)
 
     window.mainloop()
