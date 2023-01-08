@@ -1,16 +1,17 @@
 # data entry and load data
 
 import tkinter
-from tkinter import messagebox
+from tkinter import messagebox,ttk
 import os
 import openpyxl
 from tkcalendar import DateEntry
 
 def entry():
+
     def enter_data():
-        accepted = accept_var.get()
-        
-        if accepted=="Accepted":
+        accept = accept_var.get()
+
+        if accept == 1:
             firstname = first_name_entry.get()
             middlename = middle_name_entry.get()
             lastname = last_name_entry.get()
@@ -20,6 +21,7 @@ def entry():
                     if middlename:
                         middlename = middlename + ' '
                     name = firstname+' '+middlename+lastname
+                    name = name.upper()
                     age = age_spinbox.get()
                     dateofbirth = dob_entry.get()
                     gender =gen()
@@ -33,39 +35,37 @@ def entry():
                     semester = sem_spinbox.get()
                     rollno = rollno_entry.get()
 
-                    if len(contactno)==10:
+                    if len(str(contactno))==10:
                         try:
                             contactno = int(contactno)
                         except:
-                            tkinter.messagebox.showwarning(title="Error", message="Enter correct contact number.")
+                            tkinter.messagebox.showwarning(title="Error", message="Enter a contact number.")
                     else:
                         tkinter.messagebox.showwarning(title="Error", message="Enter correct contact number.")
                     
-                    filepath = "D:\PROGRAMS\ACADEMIC\PYTHON\data.xlsx"
-                    
-                    if not os.path.exists(filepath):
+                    if not os.path.exists(path):
                         workbook = openpyxl.Workbook()
                         sheet = workbook.active
-                        heading = ['Name','Age','Date of Birth','Gender','Contact No','Email','Department','Semester','Roll No']
+                        heading = ['Name','Age','Gender','Contact No','Department','Semester','Roll No','Date of Birth','Email']
                         sheet.append(heading)
-                        workbook.save(filepath)
-                    workbook = openpyxl.load_workbook(filepath)
+                        workbook.save(path)
+                    workbook = openpyxl.load_workbook(path)
                     sheet = workbook.active
-                    sheet.append([name, age, dateofbirth, gender, contactno,email,department,semester,rollno]) 
-                    workbook.save(filepath)
+                    sheet.append([name, age, gender, contactno,department,semester,rollno,dateofbirth,email]) 
+                    workbook.save(path)
                 else:
                     tkinter.messagebox.showwarning(title="Error", message="Enter proper name.")      
             else:
                 tkinter.messagebox.showwarning(title="Error", message="First name and last name are required.")
         else:
-            tkinter.messagebox.showerror(title= "Error", message="You have not accepted the terms")
+            tkinter.messagebox.showwarning(title= "Error", message="You have not accepted the terms")
 
     window = tkinter.Tk()
     window.title("Data Entry Form")
 
     frame = tkinter.Frame(window)
     frame.pack()
-
+    
     def gen():
         gen = var.get()
         if gen==1:
@@ -105,7 +105,7 @@ def entry():
 
     gender_label = tkinter.Label(pers_info, text="Gender")
     gender_label.grid(row=2, column=2)
-    var = tkinter.IntVar()
+    var = tkinter.IntVar(pers_info)
     radiobutton1 = tkinter.Radiobutton(pers_info, variable=var,text="Male", value=1,command=gen)
     radiobutton1.grid(row=3, column=2)
     radiobutton2 = tkinter.Radiobutton(pers_info, variable=var,text="Female", value=2,command=gen)
@@ -149,11 +149,11 @@ def entry():
         widget.grid_configure(padx=10, pady=5)
 
     terms_frame = tkinter.LabelFrame(frame, text="Terms & Conditions")
-    terms_frame.grid(row=2, column=0, sticky="news", padx=20, pady=10)
+    terms_frame.grid(row=2, column=0, sticky="news", padx=20, pady=10)  
 
-    accept_var = tkinter.StringVar(value="Not Accepted")
-    terms_check = tkinter.Checkbutton(terms_frame, text= "I accept the terms and conditions.",
-                                    variable=accept_var, onvalue="Accepted", offvalue="Not Accepted")
+    accept_var = tkinter.IntVar(terms_frame)
+    terms_check = tkinter.Checkbutton(terms_frame, text= "I accept the terms and conditions.", 
+                                        variable=accept_var, onvalue=1, offvalue=0)
     terms_check.grid(row=0, column=0)
 
     button = tkinter.Button(frame, text="Enter data", command= enter_data)
@@ -161,19 +161,123 @@ def entry():
     
     window.mainloop()
 
+
+def load():
+
+    if not os.path.exists(path):
+        tkinter.messagebox.showwarning(title="Error", message="File Not Found.")
+        return
+    
+    window = tkinter.Tk()
+    window.title("List of Entries")
+
+    workbook = openpyxl.load_workbook(path)
+    sheet = workbook.active
+    list_values = list(sheet.values)
+
+    if len(list_values)==1:
+        tkinter.messagebox.showwarning(title="Error", message="No Entries Found.")
+        window.destroy()
+
+    cols = list_values[0]
+    tree = ttk.Treeview(window, column= cols, show="headings")
+    widths = [150,80,70,90,120,70,80,100,250]
+    i=0
+    for col_name in cols:
+        tree.heading(col_name, text = col_name)
+        tree.column(col_name,anchor="center",width=widths[i])
+        i=i+1
+    tree.pack(expand=True)
+        
+    for value in list_values[1:]:
+        tree.insert('',tkinter.END, values=value)
+
+    window.mainloop()
+
+def search():
+    
+    if not os.path.exists(path):
+        tkinter.messagebox.showwarning(title="Error", message="File Not Found.")
+        return
+
+    window = tkinter.Tk()
+    window.title("Search Database")
+    
+    workbook = openpyxl.load_workbook(path)
+    sheet = workbook.active
+    list_values = list(sheet.values)
+    head = list_values[0]
+    list_values.pop(0)
+ 
+    if not list_values:
+        tkinter.messagebox.showerror(title="Error", message="No Entries Found")
+        window.destroy()
+
+    def search():
+        category = categ.get()
+        data = data_entered.get()
+        if category == 'Name' or category=='Department':
+            data=data.upper()
+        elif category == 'Gender':
+            data = data.capitalize()
+        col = categories.index(category)
+        found = []
+        
+        for i in range(0,len(list_values)):
+            if list_values[i][col] == data:
+                found.extend([list_values[i]])
+
+        if not found:
+            tkinter.messagebox.showerror(title="Error", message="No Entries Found")
+        else:
+            window1 = tkinter.Tk()
+            window1.title("Searched Results")
+
+            tree = ttk.Treeview(window1, column= head, show="headings")
+            widths = [150,80,70,90,120,70,80,100,250]
+            i=0
+            for col_name in head:
+                tree.heading(col_name, text = col_name)
+                tree.column(col_name,anchor="center",width=widths[i])
+                i=i+1
+            tree.pack(expand=True)
+                
+            for value in found:
+                tree.insert('',tkinter.END, values=value)
+            window1.mainloop()
+        
+    options = tkinter.Label(window)
+    options.grid(row=0, column=0)
+    categories = ['Name','Age','Gender','Contact No','Department','Semester','Roll No']
+    categ = tkinter.ttk.Combobox(options, values=categories)
+    categ.grid(row=1,column=0,padx=10,pady=10)
+    data_entered = tkinter.Entry(options)
+    data_entered.grid(row=1, column=1,padx=10,pady=10)
+    btn_search = tkinter.Button(window, text="Search", width=10,activebackground = '#E6E6FA',justify='center',command=search)
+    btn_search.grid(row=1, column=0,pady=10,padx=20)
+
+    window.mainloop()
+
+def close():
+    root.destroy()
+
 if __name__ == "__main__":
     root = tkinter.Tk()
     root.title('Data Collection')  
 
-    label = tkinter.Label(root, text="STUDENTS' RECORD FOR 2022 - 2023",font = ('Lucida Console',18))
-    label.grid(row=0, column=0,pady=5,padx=10)
+    path = "D:\data.xlsx"
+
+    label = tkinter.Label(root, text="STUDENTS' RECORD FOR 2022 - 2023",font = ('Lucida Console',22))
+    label.grid(row=0, column=0,pady=15,padx=10)
     options = tkinter.Label(root)
     options.grid(row=1, column=0)
-    btn_1 = tkinter.Button(options, text="ENTER DATA", height=2, width=15,activebackground = '#FFCCCB',command = entry)
+    btn_1 = tkinter.Button(options, text="ENTER DATA", height=2, width=15,activebackground = '#E6E6FA',command = entry)
     btn_1.grid(row=1, column=0,pady=10,padx=20)
-    btn_2 = tkinter.Button(options, text="LOAD DATA", height=2, width=15,activebackground = '#FFCCCB')
+    btn_2 = tkinter.Button(options, text="LOAD DATA", height=2, width=15,activebackground = '#90EE90',command = load)
     btn_2.grid(row=1, column=1,pady=10,padx=20)
-    btn_3 = tkinter.Button(options, text="SEARCH DATA", height=2, width=15,activebackground = '#FFCCCB')
+    btn_3 = tkinter.Button(options, text="SEARCH DATA", height=2, width=15,activebackground = '#ADD8E6',command=search)
     btn_3.grid(row=1, column=2,pady=10,padx=20)
+    btn_4 = tkinter.Button(options, text="EXIT", height=2, width=15,activebackground = '#FFCCCB',command=close)
+    btn_4.grid(row=1, column=3,pady=10,padx=20)
 
     root.mainloop()
