@@ -30,7 +30,7 @@ def entry():
 
                     department = dept.get()
                     if department not in departments:
-                        tkinter.messagebox.showwarning(title="Error", message="Enter your department.")
+                        messagebox.showwarning(title="Error", message="Enter your department.")
 
                     semester = sem_spinbox.get()
                     rollno = rollno_entry.get()
@@ -39,9 +39,9 @@ def entry():
                         try:
                             contactno = int(contactno)
                         except:
-                            tkinter.messagebox.showwarning(title="Error", message="Enter a contact number.")
+                            messagebox.showwarning(title="Error", message="Enter a contact number.")
                     else:
-                        tkinter.messagebox.showwarning(title="Error", message="Enter correct contact number.")
+                        messagebox.showwarning(title="Error", message="Enter correct contact number.")
                     
                     if not os.path.exists(path):
                         workbook = openpyxl.Workbook()
@@ -54,11 +54,11 @@ def entry():
                     sheet.append([name, age, gender, contactno,department,semester,rollno,dateofbirth,email]) 
                     workbook.save(path)
                 else:
-                    tkinter.messagebox.showwarning(title="Error", message="Enter proper name.")      
+                    messagebox.showwarning(title="Error", message="Enter proper name.")      
             else:
-                tkinter.messagebox.showwarning(title="Error", message="First name and last name are required.")
+                messagebox.showwarning(title="Error", message="First name and last name are required.")
         else:
-            tkinter.messagebox.showwarning(title= "Error", message="You have not accepted the terms")
+            messagebox.showwarning(title= "Error", message="You have not accepted the terms")
 
     window = tkinter.Tk()
     window.title("Data Entry Form")
@@ -132,7 +132,7 @@ def entry():
     departments = ['CSE','IT','ECE','EE','AIML']
     dept_label = tkinter.Label(acad_info, text="Department")
     dept_label.grid(row=0, column=0)
-    dept = tkinter.ttk.Combobox(acad_info, values=departments)
+    dept = ttk.Combobox(acad_info, values=departments)
     dept.grid(row=1,column=0)
 
     sem_label = tkinter.Label(acad_info, text="Semester")
@@ -165,7 +165,7 @@ def entry():
 def load():
 
     if not os.path.exists(path):
-        tkinter.messagebox.showwarning(title="Error", message="File Not Found.")
+        messagebox.showwarning(title="Error", message="File Not Found.")
         return
     
     window = tkinter.Tk()
@@ -176,7 +176,7 @@ def load():
     list_values = list(sheet.values)
 
     if len(list_values)==1:
-        tkinter.messagebox.showwarning(title="Error", message="No Entries Found.")
+        messagebox.showwarning(title="Error", message="No Entries Found.")
         window.destroy()
 
     cols = list_values[0]
@@ -197,7 +197,7 @@ def load():
 def search():
     
     if not os.path.exists(path):
-        tkinter.messagebox.showwarning(title="Error", message="File Not Found.")
+        messagebox.showwarning(title="Error", message="File Not Found.")
         return
 
     window = tkinter.Tk()
@@ -210,7 +210,7 @@ def search():
     list_values.pop(0)
  
     if not list_values:
-        tkinter.messagebox.showerror(title="Error", message="No Entries Found")
+        messagebox.showerror(title="Error", message="No Entries Found")
         window.destroy()
 
     def search():
@@ -228,7 +228,7 @@ def search():
                 found.extend([list_values[i]])
 
         if not found:
-            tkinter.messagebox.showerror(title="Error", message="No Entries Found")
+            messagebox.showerror(title="Error", message="No Entries Found")
         else:
             window1 = tkinter.Tk()
             window1.title("Searched Results")
@@ -247,11 +247,15 @@ def search():
             window1.mainloop()
         
     options = tkinter.Label(window)
-    options.grid(row=0, column=0)
+    options.grid(row=0, column=0,pady=10)
+    category_label = tkinter.Label(options, text="Category")
+    category_label.grid(row=0, column=0)
+    enter_label = tkinter.Label(options, text="Enter Data :")
+    enter_label.grid(row=0, column=1)
     categories = ['Name','Age','Gender','Contact No','Department','Semester','Roll No']
-    categ = tkinter.ttk.Combobox(options, values=categories)
+    categ = ttk.Combobox(options, values=categories)
     categ.grid(row=1,column=0,padx=10,pady=10)
-    data_entered = tkinter.Entry(options)
+    data_entered = tkinter.Entry(options,width=30)
     data_entered.grid(row=1, column=1,padx=10,pady=10)
     btn_search = tkinter.Button(window, text="Search", width=10,activebackground = '#E6E6FA',justify='center',command=search)
     btn_search.grid(row=1, column=0,pady=10,padx=20)
