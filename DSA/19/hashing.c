@@ -40,26 +40,39 @@ int mid_sq(int key, int size)
 	return ((k2%f)/r)%size;
 }
 
+int length(int number)
+{
+    int n=0;
+    while(number!=0)
+    {
+        number=number/10;
+        n++;
+    }
+    return n;
+}
 int folding(int key, int size)
 {
-	int ss=0,t=size-1,rem=0,sum=0;
-	while(t>0)
+    int n = length(size-1);
+    int len = length(key);
+    int arr[100];
+    int len1=len;
+    for(int i=0;i<len;i++)
     {
-		t/=10;
-		ss++;
-	}
-	t=key/ss;
-	rem=key%ss;
-	ss=(int)pow(10,ss);
-	sum+=key%(int)pow(10,rem);
-	key/=(int)pow(10,rem);
-	while(t>0)
+        int g = ceil(pow(10,len1-1));
+        arr[i] = key/g;
+        key = key%g;
+        len1--;
+    }
+    int st=0,z=0;
+    for(int i=0;i<n;i++)
     {
-		sum+=key%ss;
-		key/=ss;
-		t--;
-	}
-	return (sum%ss)%size;
+        for(i=z;i<(len-2);i++)
+        {
+            st=st+(arr[z]*10 + arr[z+1]);
+            z = z+2;
+        }
+    }
+    return st%size; 
 }
 
 void print(int arr[],int size)
