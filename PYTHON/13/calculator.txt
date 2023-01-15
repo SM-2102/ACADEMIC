@@ -1,28 +1,15 @@
 """
 
-Data Entry Form 
-
-Python Group Project 2023
+Simple Calculator
 
 @author : Sukanya Manna
-		  Aranya Adhikary
-		  Shounak Dey
-		  Dipan Dutta
-		  Koyena Chakraborti
-		  
-Synopsis : The following code produces a GUI for filling data of students.
-		It gives four options : enter data, load data, search data and exit.
+
+Synopsis : The following code produces a simple calculator.
+		It has 10 functions : addition, subtraction, division,
+		multiplication, power, square, square root, inverse, 
+		logarithm with base 10, logarithm with base e.
+		It contains 25 buttons and input entry.
 		
-		Enter Data : It creates a form with 12 categories and checks for correct name, 
-			phone number, contact number. It also check whether the user has accepted 
-			the terms and conditions. The data is entered when the user clicks the 
-			submit button.
-			
-		Load Data : It shows all the entries in an excel format.
-		
-		Search Data : It provides a drop down menu with 7 categories, an input area
-			and search button. It also shows a message if no searched results are found. 
-			
 """
 
 from tkinter import *
