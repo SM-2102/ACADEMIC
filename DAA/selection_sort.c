@@ -34,7 +34,8 @@ int main()
 		min =i;
 		for(int j=i+1;j<n;j++)
 			if (arr[min]>arr[j])
-				swap(&arr[min],&arr[j]);
+				min=j;
+		swap(&arr[min],&arr[i]);
 	}
 	end=clock();
 	total = (double)(end-start)/CLOCKS_PER_SEC;
