@@ -1,5 +1,4 @@
 #include<stdio.h>
-#include<math.h>
 #include<stdlib.h>
 #include<time.h>
 
@@ -76,6 +75,10 @@ void  multiply(int **a,int **b,int n1,int n2,int **new)
             m7[i]= malloc(nsize * sizeof(int));
             temp1[i]= malloc(nsize*sizeof(int));
             temp2[i]= malloc(nsize*sizeof(int));
+            te1[i]= malloc(nsize*sizeof(int));
+            te2[i]= malloc(nsize*sizeof(int));
+            te3[i]= malloc(nsize*sizeof(int));
+            te4[i]= malloc(nsize*sizeof(int));
         }
 
         for(i=0;i<nsize;i++)
@@ -115,17 +118,6 @@ void  multiply(int **a,int **b,int n1,int n2,int **new)
         add(b10,b11,nsize,temp2);
         multiply(temp1,temp2,nsize,n1,m7);  
        
-
-        
-
-        for(i=0;i<nsize;i++)
-        {
-            te1[i]= malloc(nsize*sizeof(int));
-            te2[i]= malloc(nsize*sizeof(int));
-            te3[i]= malloc(nsize*sizeof(int));
-            te4[i]= malloc(nsize*sizeof(int));
-        }   
-
         add(m1,m7,nsize,temp1);
         sub(m4,m5,nsize,temp2);
         add(temp1,temp2,nsize,te1);//c11
