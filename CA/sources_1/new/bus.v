@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 16.03.2023 10:27:56
+// Create Date: 16.03.2023 10:59:47
 // Design Name: 
-// Module Name: comp
+// Module Name: bus
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,10 +20,9 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module comp_xor(input [3:0]a, input[3:0]b,output[3:0]c);
-assign b[0] = 1^a[0];
-assign b[1] = 1^a[1];
-assign b[2] = 1^a[2];
-assign b[3] = 1^a[3];
-assign c = b+1'b1; 
+module bus(input [3:0]i, input c, output [3:0]z);
+assign z[3] = (i[3]&c)|(~c & 1'bz);
+assign z[2] = (i[2]&c)|(~c & 1'bz);
+assign z[1] = (i[1]&c)|(~c & 1'bz);
+assign z[0] = (i[0]&c)|(~c & 1'bz);
 endmodule
