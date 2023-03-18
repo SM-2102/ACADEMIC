@@ -1,4 +1,4 @@
-#include <stdio.h>
+¹#include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 
@@ -25,7 +25,7 @@ int main()
 		printf("%d ",arr[i]);
 	printf("\n");
         num = rand()%100;
-	printf("The number to be found : %d",num);
+	printf("The number to be found : %d\n",num);
 	start = clock();
 	int c,lp,up,mid;
 	lp=0,up=n,c=0;
