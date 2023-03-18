@@ -72,7 +72,7 @@ void  multiply(int **a,int **b,int n1,int n2,int **new)
             m4[i]= malloc(nsize*sizeof(int));
             m5[i]= malloc(nsize*sizeof(int));
             m6[i]= malloc(nsize*sizeof(int));
-            m7[i]= malloc(nsize * sizeof(int));
+            m7[i]= malloc(nsize*sizeof(int));
             temp1[i]= malloc(nsize*sizeof(int));
             temp2[i]= malloc(nsize*sizeof(int));
             te1[i]= malloc(nsize*sizeof(int));
