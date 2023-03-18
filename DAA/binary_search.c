@@ -24,8 +24,8 @@ int main()
 	for(int i=0;i<n;i++)
 		printf("%d ",arr[i]);
 	printf("\n");
-	printf("Enter the number to be found : ");
-	scanf("%d",&num);
+        num = rand()%100;
+	printf("The number to be found : %d",num);
 	start = clock();
 	int c,lp,up,mid;
 	lp=0,up=n,c=0;
