@@ -9,7 +9,7 @@ void tower(int n,char from, char to, char use)
 	else
 	{
 		tower(n-1,from,use,to);
-		printf("Move Disk from %c to %c.\n",from,to);
+		printf("Move %d disk from %c to %c.\n",n,from,to);
 		tower(n-1,use,to,from);
 	}
 }
