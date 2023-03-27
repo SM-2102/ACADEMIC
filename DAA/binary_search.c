@@ -2,6 +2,22 @@
 #include <stdlib.h>
 #include <time.h>
 
+void binary(int arr[],int lp, int up,int num)
+{
+	if (lp>up)
+		printf("Number not found.\n");
+	else
+	{	
+		int mid = (lp+up)/2;
+		if(arr[mid]==num)	
+			printf("Number found.\n");
+		else if (arr[mid]>num)
+			binary(arr,lp,mid-1,num);
+		else
+			binary(arr,mid+1,up,num);
+	}
+}
+
 int main()
 {
 	int n,num;
@@ -24,29 +40,11 @@ int main()
 	for(int i=0;i<n;i++)
 		printf("%d ",arr[i]);
 	printf("\n");
-        num = rand()%100;
+	num = rand()%10;
 	printf("The number to be found : %d\n",num);
 	start = clock();
-	int c,lp,up,mid;
-	lp=0,up=n,c=0;
-	while(lp<=up)
-	{	
-		mid = (lp+up)/2;
-		if(arr[mid]==num)
-		{
-			c=1;
-			break;
-		}
-		else if (arr[mid]>num)
-			up = mid-1;
-		else
-			lp = mid+1;
-	}	
+	binary(arr,0,n-1,num);	
 	end =clock();
-	if (c==0)
-		printf("Number not found.\n");
-	else
-		printf("Number found.\n");
 	total = (double)(end-start)/CLOCKS_PER_SEC;
 	printf("Duration in seconds : %lf\n",total);
 }
