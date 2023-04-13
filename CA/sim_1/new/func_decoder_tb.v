@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 30.03.2023 10:21:55
+// Create Date: 13.04.2023 10:26:24
 // Design Name: 
-// Module Name: decoder_tb
+// Module Name: func_decoder_tb
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,11 +20,11 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module decoder_tb;
+module func_decoder_tb;
   reg [2:0]i=0;
-  wire [7:0]y;
+  wire [3:1]F;
   integer j=0;
-  decoder uut(.i(i),.y(y));
+  func_decoder uut(.i(i),.F(F));
   initial
     begin
       for(j=0;j<8;j=j+1)begin

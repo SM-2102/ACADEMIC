@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 30.03.2023 10:21:55
+// Create Date: 13.04.2023 10:54:22
 // Design Name: 
-// Module Name: decoder_tb
+// Module Name: priority_encoder_tb
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,15 +20,16 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module decoder_tb;
-  reg [2:0]i=0;
-  wire [7:0]y;
-  integer j=0;
-  decoder uut(.i(i),.y(y));
-  initial
-    begin
-      for(j=0;j<8;j=j+1)begin
-      #10;
+module priority_encoder_tb;
+    reg [3:0]i=0;
+    wire [1:0]o;
+    wire val;
+    integer j=0;
+    priority_encoder uut(.i(i),.o(o),.val(val));
+    initial
+        begin
+            for(j=0;j<16;j=j+1)begin
+        #10;
        i=i+1'b1;       
       end
     end
