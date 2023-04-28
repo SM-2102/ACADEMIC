@@ -1,8 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-float cp[20], x[20];
-
 void swap(float *a, float *b)
 {
 	float temp = *a;
