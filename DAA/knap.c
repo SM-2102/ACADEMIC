@@ -47,17 +47,17 @@ int main()
 	printf("Enter the profit and weight of each item : \n");
    	for (int i= 0; i < n; i++)
 	{
-        	scanf("%f %f", &profit[i], &weight[i]);
+        scanf("%f %f", &profit[i], &weight[i]);
 		ratio[i] = profit[i] / weight[i];
-         	ratio_copy[i] = ratio[i];
+        ratio_copy[i] = ratio[i];
 	}
    	for (int i = 0; i < n; i++) 
         	for (int j = i + 1; j < n; j++)
                 	if (ratio[i] < ratio[j]) 
-			{
-                              swap(&ratio[i], &ratio[j]);
-                              swap(&weight[i], &weight[j]);
-                              swap(&profit[i], &profit[j]);
-                        } 
+					{
+                    	swap(&ratio[i], &ratio[j]);
+                        swap(&weight[i], &weight[j]);
+                        swap(&profit[i], &profit[j]);
+                    } 
    	knapsack(n, weight, profit, capacity,ratio,ratio_copy);
 }

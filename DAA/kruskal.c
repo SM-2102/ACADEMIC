@@ -58,11 +58,10 @@ void kruskal(int n,int graph[n][n])
     int cost = 0;
     for (int i = 0; i < list.n; i++)
     {
-        printf("\n%d - %d : %d", list.data[i].u, list.data[i].v, list.data[i].w);
+        printf("%d - %d : %d\n", list.data[i].u, list.data[i].v, list.data[i].w);
         cost = cost + list.data[i].w;
     }
-    printf("\nSpanning tree cost: %d", cost);
-    printf("\n");
+    printf("Spanning tree cost: %d\n", cost);
 }
 
 int main() 

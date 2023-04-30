@@ -1,5 +1,4 @@
 #include<stdio.h>
-#include<stdlib.h>
 
 void findmin(int cost,int n,int coins[],int soln_vector[],int copy_coins[])
 {
@@ -41,13 +40,11 @@ int main()
 	}
 	for(int i=0;i<n;i++)
         	for(int j=i+1;j<n;j++)
-		{
                 	if(coins[i]<coins[j])
-			{
+					{
                         	int temp=coins[i];
                         	coins[i]=coins[j];
                         	coins[j]=temp;
                		 }
-       		 }
 	findmin(cost,n,coins,soln_vector,copy_coins);
 }
