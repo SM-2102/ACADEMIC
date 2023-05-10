@@ -20,7 +20,6 @@ int matrix(int *p, int n)
 				if (q<m[i][j])
 					m[i][j] = q;
 			}
-
 		}
 	return m[1][n-1];
 }
