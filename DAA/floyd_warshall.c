@@ -4,6 +4,7 @@
 
 void print(int n,int matrix[n][n]) 
 {
+	printf("The shortest path matrix : \n");
   	for (int i = 0; i < n; i++) 
   	{
 	    for (int j = 0; j < n; j++) 
