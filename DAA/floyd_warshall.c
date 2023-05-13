@@ -16,18 +16,41 @@ void print(int n,int matrix[n][n])
 }
 
 void floydwarshall(int n, int graph[n][n]) 
+
 {
+
   	int matrix[n][n];
+
   	for (int i = 0; i < n; i++)
+
     		for (int j = 0; j < n; j++)
+
       			matrix[i][j] = graph[i][j];
+
 	for (int k = 0; k < n; k++) 
+
+	{
+
+	    print(n,matrix);
+
+	    printf("\n");
+
 		for (int i = 0; i <n; i++) 
+
 			for (int j = 0; j < n; j++) 
+
 				if (matrix[i][k] + matrix[k][j] < matrix[i][j])
+
 				  	matrix[i][j] = matrix[i][k] + matrix[k][j];
+
+	}
+
+	printf("The shortestt distance matrix :\n");
+
   	print(n,matrix);
+
 }
+
 
 int main() 
 {
