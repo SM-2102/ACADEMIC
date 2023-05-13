@@ -1,5 +1,4 @@
 #include<stdio.h>
-#include<stdlib.h>
 
 int board[20], count;
 
@@ -58,5 +57,4 @@ int main()
 	printf("Enter the number of queens: ");
 	scanf("%d", &n);
 	queen(1, n);
-	return 0;
 }
