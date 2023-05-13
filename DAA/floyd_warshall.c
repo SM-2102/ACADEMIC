@@ -45,7 +45,7 @@ void floydwarshall(int n, int graph[n][n])
 
 	}
 
-	printf("The shortestt distance matrix :\n");
+	printf("The shortest distance matrix :\n");
 
   	print(n,matrix);
 
