@@ -25,5 +25,5 @@ wire [3:0]w1;
 wire w2;
 bin_bcd uut(a,w1,w2);
 assign y1 = w1+4'b0011;
-assign y2 = (w2==1)?w2+4'b0011:4'b0000;
+assign y2 = (w2==1'b1)?4'b0100:4'b0000;
 endmodule
