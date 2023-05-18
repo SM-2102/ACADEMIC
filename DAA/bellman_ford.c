@@ -98,7 +98,7 @@ int main() {
 
     initializeGraph(&graph, n, 0);
 
-    printf("Enter the edges in the format (source destination weight):\n");
+    printf("Enter the source,destination and weight of each edge :\n");
     for (int i = 0; i < e; i++) 
     {
         int source, dest, weight;
