@@ -91,9 +91,9 @@ int main() {
     struct Graph graph;
     int n,e,source;
 
-    printf("Enter the number of vertices in the graph: ");
+    printf("Enter the number of vertices : ");
     scanf("%d", &n);
-    printf("Enter the number of edges in the graph: ");
+    printf("Enter the number of edges : ");
     scanf("%d", &e);
 
     initializeGraph(&graph, n, 0);
