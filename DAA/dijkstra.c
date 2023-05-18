@@ -1,53 +1,76 @@
-#include <stdio.h>
-#include <stdbool.h>
-#include <limits.h>
+#include<stdio.h>
+#include<limits.h>
+#include<stdbool.h>
 
-int g[100][100];
-
-int findMinVertex(int n,int dist[n+1],bool visited[n+1])
+void printPath(int n,int current_v, int parents[n])
 {
-	int minVertex=-1;
-    	for(int node=1;node<=n;node++)
-    	{
-        	if(!visited[node] && (minVertex==-1 || dist[node]<dist[minVertex]))
-            		minVertex=node;
-    	}
-    	return minVertex;
+	if (current_v == -1) 
+		return;
+	printPath(n,parents[current_v], parents);
+	printf("%d ",current_v);
+}
+
+void printSolution(int start, int n,int distances[n],int parents[n])
+{
+	printf(" Vertex\t     Distance \tPath");
+	for (int i = 0; i < n;i++)
+		if (i != start) 
+		{
+			printf("\n %d -> ",start);
+			printf("%d \t",i);
+			printf("%d \t",distances[i]);
+			printPath(n,i, parents);
+		}
+}
+
+
+void dijkstra(int n,int graph[n][n],int start)
+{
+	int shortest_dist[n];
+	bool added[n];
+	for (int i = 0; i < n;i++) 
+	{
+		shortest_dist[i] = INT_MAX;
+		added[i] = false;
+	}
+	shortest_dist[start] = 0;
+	int parents[n];
+	parents[start] = -1;
+	for (int i = 1; i < n; i++) 
+	{
+		int nearestVertex = -1;
+		int shortestDistance = INT_MAX;
+		for (int j = 0; j < n;j++)
+			if (!added[j] && shortest_dist[j]< shortestDistance) 
+			{
+				nearestVertex = j;
+				shortestDistance = shortest_dist[j];
+			}
+		added[nearestVertex] = true;
+		for (int i = 0; i < n;i++)
+		{
+			int dist=graph[nearestVertex][i];
+			if (dist > 0 && ((shortestDistance + dist)< shortest_dist[i])) 
+			{
+				parents[i] = nearestVertex;
+				shortest_dist[i]= shortestDistance + dist;
+			}
+		}
+	}
+	printSolution(start, n,shortest_dist, parents);
 }
 
 int main()
 {
-	int adjNode,nodes,n,e;
-    	printf("Enter the number of nodes and edges : \n");
-    	scanf("%d %d", &n, &e);
-	printf("Enter source, destination, weight of each edge : \n");
-    	for (int i = 0; i < e; i++)
-    	{
-        	int u, v,wt;
-        	scanf("%d %d %d", &u, &v,&wt);
-        	g[u][v] = wt;
-    	}
-	bool vis[n+1];
-    	int dist[n + 1];
-	for (int i = 1; i <= n; i++)
-    	{
-        	dist[i]=INT_MAX;
-        	vis[i]=false;
-    	}
-    	printf("Enter source : ");
-    	int source;
-    	scanf("%d",&source);
-    	dist[source]=0;
-    	for(nodes=1;nodes<=n;nodes++)
-    	{
-        	int minVertex = findMinVertex(n,dist, vis);
-        	vis[minVertex] = true;
-        	for (adjNode = 1; adjNode <= n; adjNode++)
-            		if(g[minVertex][adjNode]!=0 && !vis[adjNode])
-                		if(dist[minVertex]+g[minVertex][adjNode]<dist[adjNode])
-                			dist[adjNode]=dist[minVertex]+g[minVertex][adjNode];
-    	}
-    	for(int i=1;i<=n;i++)
-        printf("Node %d is at distance %d\n",i,dist[i]);
+	int n;
+    printf("Enter the number of vertices : ");
+    scanf("%d",&n);
+	int graph[n][n],source;
+    printf("Enter the adjacency matrix : \n");
+	for (int i = 0; i < n; i++)
+		for (int j = 0; j < n; j++)
+			scanf("%d", &graph[i][j]);
+	printf("Enter the source vertex : ");
+	scanf("%d",&source);
+	dijkstra(n,graph,source);
 }
-
