@@ -13,20 +13,28 @@ class Stack
 		if(top >= (max-1))
 			System.out.println("Stack Overflow.");
 		else
-		{
 			arr[++top]=num;
-			System.out.println("Pushed element : "+num);
-		}
+		display();
 	}
 	void pop()
 	{
 		if(top==-1)
 			System.out.println("Stack Underflow.");
 		else
-		{
 			num = arr[top--];
-			System.out.println("Popped element : "+num);
-		}
+		display();
+	}
+	void display()
+	{
+	    if(top<=-1)
+	        System.out.println("Stack empty.");
+	    else
+	    {
+	        System.out.print("The contents : ");
+	        for (int i=top; i>=0;i--)
+	             System.out.print(arr[i]+" ");
+	        System.out.println();
+	    }
 	}
 }
 	
