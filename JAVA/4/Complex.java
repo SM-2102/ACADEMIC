@@ -15,9 +15,9 @@ class Complex
 	void display()
 	{
 		if (imag>0)
-			System.out.println(real+"+"+imag+"i");
+			System.out.println(real+" + "+imag+"i");
 		else
-			System.out.println(real+""+imag+"i");
+			System.out.println(real+" + ("+imag+")i");
 	}
 	static void funct(Complex num1,Complex num2)
 	{	
@@ -43,7 +43,7 @@ class Complex
 	public static void main(String args[])
 	{
 		Complex n1 = new Complex(1,3), 
-				n2 = new Complex(-4,5),
+				n2 = new Complex(-4,-5),
 				n3 = new Complex(5.2,9.6);
 		System.out.println("The numbers : ");
 		n1.display();
