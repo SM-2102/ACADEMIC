@@ -1,2 +1,4 @@
-echo Enter the file name, starting line and number of lines to be displayed > echo $1 $2 $3
-tail -n +$2 $1 | head -n $3
+read -p "Enter file name : " file
+read -p "Enter starting line : " start
+read -p "Enter the number of lines to be displayed : " num
+tail -n +$start $file | head -n $num
