@@ -23,7 +23,7 @@ class Bedroom extends Room
     }
     void display()
     {
-        System.out.println("Attached bedroom : "+attached_bathroom);
+        System.out.println("Attached bathroom : "+attached_bathroom);
         System.out.println("Study table : "+study_table);
         System.out.println("Night lamp : "+night_lamp);
     }
