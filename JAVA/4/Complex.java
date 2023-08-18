@@ -31,7 +31,7 @@ class Complex
 		System.out.print("The subtraction : ");
 		ans.display();
 		ans.real = (num1.real*num2.real)-(num1.imag*num2.imag);
-		ans.imag = (num1.real+num2.imag)-(num1.imag*num2.real);
+		ans.imag = (num1.real*num2.imag)-(num1.imag*num2.real);
 		System.out.print("The multiplication : ");
 		ans.display();
 		double mod = Math.sqrt(num1.real*num1.real + num1.imag*num1.imag);
