@@ -43,12 +43,10 @@ class Complex
 	public static void main(String args[])
 	{
 		Complex n1 = new Complex(1,3), 
-				n2 = new Complex(-4,-5),
-				n3 = new Complex(5.2,9.6);
+			n2 = new Complex(-4,-5);
 		System.out.println("The numbers : ");
 		n1.display();
 		n2.display();
-		n3.display();
 		funct(n1,n2);
 		System.out.println("The count of numbers : "+number);
 	}
