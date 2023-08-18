@@ -2,8 +2,8 @@ echo "Enter the numbers : "
 read -a arr
 n=${#arr[@]}
 echo "The original array : ${arr[@]}"
-maxi=${arr[1]}
-mini=${arr[1]}
+maxi=${arr[0]}
+mini=${arr[0]}
 for (( i=1; i<n; i++ ))
 do
 	if [ $maxi -lt ${arr[$i]} ]
