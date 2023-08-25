@@ -6,7 +6,7 @@ abstract class TwoDFigure
         dim1=a;
         dim2=b;
     }
-    void calc_area();
+    abstract void calc_area();
 }
 
 class Rectangle extends TwoDFigure
@@ -39,6 +39,9 @@ class Mainclass
 {
     public static void main(String args[])
     {
-        
+        TwoDFigure ob1 = new Rectangle(20, 30);
+        ob1.calc_area();
+        TwoDFigure ob2 = new Triangle(20, 30);
+        ob2.calc_area();
     }
 }
