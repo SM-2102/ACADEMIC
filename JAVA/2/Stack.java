@@ -5,8 +5,8 @@ class Stack
 	{
 		top = t;
 		max = m;
-	}	
-	int arr[] = new int[10];		
+	}
+	int arr[] = new int[10];
 	void push(int num)
 	{
 		
@@ -26,15 +26,15 @@ class Stack
 	}
 	void display()
 	{
-	    if(top<=-1)
-	        System.out.println("Stack empty.");
-	    else
-	    {
-	        System.out.print("The contents : ");
-	        for (int i=top; i>=0;i--)
-	             System.out.print(arr[i]+" ");
-	        System.out.println();
-	    }
+		if(top<=-1)
+			System.out.println("Stack empty.");
+		else
+		{
+			System.out.print("The contents : ");
+			for (int i=top; i>=0;i--)
+				System.out.print(arr[i]+" ");
+			System.out.println();
+		}
 	}
 }
 	

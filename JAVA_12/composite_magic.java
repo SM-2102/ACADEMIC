@@ -29,7 +29,7 @@ public class composite_magic {
                 mag = magic(i);
                 if ((fact == 1) && (mag == 1)) {
                     System.out.println(i);
-                    freq ++;                   
+                    freq ++;
                 }
             }
 

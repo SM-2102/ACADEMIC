@@ -18,7 +18,7 @@ class Bank_account
 		System.out.println("Balance of "+account_type+" account : "+balance);
 	}
 	void withdraw_money(double d)
-	{	
+	{
 		if ((balance-d)<1000 && account_type=='S')
 			System.out.println("Savings account must have a minimum of Rs.1000");
 		else if (balance<d)
@@ -50,7 +50,7 @@ class Bank
 		System.out.println("Withdrawing Rs.100 from current account.");
 		current.withdraw_money(100.0);
 		System.out.println("Withdrawing Rs.10 from savings account.");
-		savings.withdraw_money(10.0);		
+		savings.withdraw_money(10.0);
 	}
 }
 		
