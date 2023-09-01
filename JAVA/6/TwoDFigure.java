@@ -41,7 +41,7 @@ class Mainclass
     {
         TwoDFigure ob1 = new Rectangle(20, 30);
         ob1.calc_area();
-        TwoDFigure ob2 = new Triangle(20, 30);
-        ob2.calc_area();
+        ob1 = new Triangle(20, 30);
+        ob1.calc_area();
     }
 }
