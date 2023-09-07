@@ -1,16 +1,18 @@
 #include<stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-  
+#include<stdlib.h>
+#include<unistd.h>
+
 int main()
 {
-    int p = fork();
-    if (p > 0)
-        printf("Parent Process.\n");
-    else if (p == 0)
-    {
-        printf("Child Process.\n");
-        sleep(5);
-        printf("Orphan Process.\n");
-    }
+        int pid=fork();
+        if(pid == 0)
+        {
+                for(int i=0;i<2;i++)
+                        printf("Child Process\n");
+        }
+        else if(pid>0)
+        {
+                printf("Parent Process\n");
+                while(1);
+        }
 }
