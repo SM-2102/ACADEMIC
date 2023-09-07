@@ -4,14 +4,20 @@
 
 int main()
 {
-	int p=fork();
-	if(p==0)
-		printf("Child process\n");
-	else if(p>0)
-    {
-		printf("Parent Process\n");
-        sleep(5);
-		printf("Zombie process\n");
-		while(1) {}
-	}
+        int pid = fork();
+        if(pid == 0)
+        {
+                printf("Child Process\n");
+                printf("ID : %d\nParent ID : %d\n", getpid(),getppid());
+                sleep(5);
+                printf("Child Process.\n");
+                printf("ID : %d\nParent ID : %d\n",getpid(),getppid());
+        }
+        else if(pid>0)
+        {
+                printf("Parent process\n");
+                printf("ID: %d\n",getpid());
+        }
+        else
+                printf("Failed to create child process.\n");
 }
