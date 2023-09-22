@@ -11,8 +11,8 @@ class Nested_try
 			catch(ArrayIndexOutOfBoundsException e)
             {
 				System.out.println("Array out of bound Exception");
-			    int a=5/0;
-			}
+			} 
+			int a=5/0;
 		}	
 		catch(ArithmeticException e)
         {

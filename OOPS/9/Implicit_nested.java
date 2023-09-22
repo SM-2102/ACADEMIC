@@ -9,9 +9,9 @@ class Implicit_nested
 		catch(ArrayIndexOutOfBoundsException e)
         {
 			System.out.println("Array Index Out of Bound ");
-			int a=10/0;
 		}
-		
+    	int a=10/0;
+
     }
     public static void main(String[] args) 
     {

@@ -8,7 +8,7 @@ class Try_catch
     {
 		try 
         {
-            String b= args[0];
+			String s= args[0];
 			int a = 5/0;
             Try_catch ob =null;
             ob.display();
@@ -19,7 +19,7 @@ class Try_catch
 		}
 		catch(ArrayIndexOutOfBoundsException e)
         {
-			System.out.println("Array out of bound");	
+			System.out.println("Array out of bounds");	
 		}
 		catch(NullPointerException e)
         {

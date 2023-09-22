@@ -7,7 +7,8 @@ class Throw_Exception
 			System.out.println("Inside Proc A");
 			throw new RuntimeException("Demo");
 		}
-		finally{
+		finally
+		{
 			System.out.println("Proc A Finally");
 		}
 	}
