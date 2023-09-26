@@ -39,9 +39,9 @@ class Mainclass
 {
     public static void main(String args[])
     {
-        TwoDFigure ob1 = new Rectangle(20, 30);
+        Rectangle ob1 = new Rectangle(20, 30);
         ob1.calc_area();
-        ob1 = new Triangle(20, 30);
-        ob1.calc_area();
+        Triangle ob2 = new Triangle(20, 30);
+        ob2.calc_area();
     }
 }
