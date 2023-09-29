@@ -23,7 +23,7 @@ class Try_catch
 		}
 		catch(NullPointerException e)
         {
-			System.out.println("Null Pointer Eception");
+			System.out.println("Null Pointer Exception");
 		}
 	}
 }

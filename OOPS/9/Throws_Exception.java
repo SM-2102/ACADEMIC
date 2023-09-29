@@ -3,7 +3,7 @@ class Throws_Exception
 	static void throwme()throws IllegalAccessException
     {
 		System.out.println("Inside Throw me");
-		throw new IllegalAccessException("Demo");	
+		throw new IllegalAccessException();
 	}
 	public static void main(String args[])
     {
@@ -13,7 +13,7 @@ class Throws_Exception
 		}
 		catch(IllegalAccessException e)
         {
-			System.out.println("Illegal exception Caught");
-		}	
-	}	
-}		
+			System.out.println("Illegal Exception Caught");
+		}
+	}
+}

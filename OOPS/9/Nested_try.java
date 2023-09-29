@@ -10,13 +10,13 @@ class Nested_try
 			}
 			catch(ArrayIndexOutOfBoundsException e)
             {
-				System.out.println("Array out of bound Exception");
+				System.out.println("Array out of Bounds");
 			} 
 			int a=5/0;
 		}	
 		catch(ArithmeticException e)
         {
-			System.out.println("Can not Divided by Zero");
+			System.out.println("Cannot Divided by Zero");
 		}	
 	}
 }

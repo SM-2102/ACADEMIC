@@ -5,7 +5,7 @@ class Throw_Exception
 		try
 		{
 			System.out.println("Inside Proc A");
-			throw new RuntimeException("Demo");
+			throw new RuntimeException();
 		}
 		finally
 		{
@@ -24,5 +24,5 @@ class Throw_Exception
 			System.out.println("Exception Caught");
 		}
 	}
-}	
+}
 		
