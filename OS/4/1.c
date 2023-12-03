@@ -10,7 +10,7 @@ int main()
                 printf("Child Process\n");
                 printf("ID : %d\nParent ID : %d\n", getpid(),getppid());
                 sleep(5);
-                printf("Child Process.\n");
+                printf("Orphan Process.\n");
                 printf("ID : %d\nParent ID : %d\n",getpid(),getppid());
         }
         else if(pid>0)
