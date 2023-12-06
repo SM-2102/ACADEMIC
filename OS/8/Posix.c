@@ -27,6 +27,6 @@ printf("Message is now %s\n",message);
 void *thread_function(void *arg){
         printf("Thread function is running, argument uses %s\n",(char*)arg);
         sleep(3);
-        strcpy(message,"Bye!\n");
-        pthread_exit("Thank you for CPU time\n");
+        strcpy(message,"Bye!");
+        pthread_exit("Exit\n");
 }
