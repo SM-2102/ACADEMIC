@@ -1,0 +1,19 @@
+SELECT * from EMP;
+
+SELECT * from EMP WHERE JOB='Manager';
+
+SELECT * from EMP WHERE EMPNO=7369;
+
+SELECT * from EMP WHERE HIREDATE='1-MAY-1981';
+
+SELECT * from EMP WHERE SAL>1500;
+
+SELECT * from EMP WHERE COMM is NULL;
+
+SELECT * from EMP WHERE SUBSTR(ENAME,1,1)='A';
+
+ALTER table EMP ADD PhoneNo number(10);
+
+ALTER table EMP MODIFY JOB varchar2(10);
+
+ALTER table EMP DROP COLUMN PhoneNo;
