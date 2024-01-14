@@ -1,1 +1,3 @@
 https://docs.oracle.com/cd/B25329_01/doc/appdev.102/b25108/xedev_sqlplus.htm#BJEJJBFI
+
+https://code.visualstudio.com/docs/languages/tsql
