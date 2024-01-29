@@ -6,7 +6,7 @@ SELECT Name from Client_master where City in ('Mumbai' , 'Delhi');
 
 SELECT Name from Client_master where Bal_due > 10000;
 
-SELECT * from Sales_order where Order_date between to_date('01-JAN-2004','DD-MON-YYYY') and to_date('31-JAN-2004','DD-MON-YYYY');
+SELECT * from Sales_order where Order_date like '%-JAN-%';
 
 SELECT * from Sales_order where Client_no in ('C00001','C00002');
 
