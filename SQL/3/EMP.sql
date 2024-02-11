@@ -8,3 +8,6 @@ CREATE table EMP(
 	COMM number(6) DEFAULT 0 check (COMM<1500),
 	DEPT_NAME varchar(10),
 	CONSTRAINT const_chk IF(JOB='Salesman',COMM>=0,COMM=0);
+
+INSERT ALL
+
