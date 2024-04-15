@@ -1,4 +1,3 @@
-
 CREATE table DEPT(
 	DEPTNO number(2),
 	DNAME varchar(15),
