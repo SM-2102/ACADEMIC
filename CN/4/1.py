@@ -17,8 +17,8 @@ elif 192<=int(ip[0])<=223:
     print("Net Id = "+ip[0]+'.'+ip[1]+'.'+ip[2])
     print("Host Id = "+ip[3])
 elif 224<=int(ip[0])<=239:
-    print("D")
+    print("Class = D")
     print("Net Id = "+ ip_address)
 elif 240<=int(ip[0])<=255:
-    print("E")
+    print("Class = E")
     print("Net Id = "+ ip_address)
