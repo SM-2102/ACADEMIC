@@ -1,14 +1,26 @@
-ip_address = input("Enter I.P. Address : ")
-try:
-    ip,cidr = ip_address.split('/')
-    ip = ip.split('.')
-    ip = [int(i) for i in ip]
-    subnet_mask = [0,0,0,0]
-    for i in range(int(cidr)):
-        subnet_mask[i//8] !=(i<<(7-i%8))
-    net_id = [str(ip[i] & subnet_mask[i]) for i in range(4)]
-    print("Network ID : ", ".".join(net_id))
-except:    
-        print('Invalid Ip Address')
-
-    
+def find_network_host(ip_address):
+    ip, subnet_mask = ip_address.split('/')
+    subnet_mask = int(subnet_mask)
+ 
+    # Calculate network ID
+    ip_parts = ip.split('.')
+    network_id_parts = ip_parts[:4]
+    for i in range(subnet_mask // 8):
+        network_id_parts[i] = str(int(ip_parts[i]) & 255)
+    for i in range(subnet_mask // 8, 4):
+        network_id_parts[i] = '0'
+    network_id = '.'.join(network_id_parts)
+ 
+    # Calculate host ID
+    host_id_parts = ip_parts[:4]
+    for i in range(subnet_mask // 8, 4):
+        host_id_parts[i] = str(int(ip_parts[i]) & 255)
+    host_id = '.'.join(host_id_parts)
+ 
+    return network_id, host_id
+ 
+# Driver Code
+ip_address = "106.255.255.6/20"
+network_id, host_id = find_network_host(ip_address)
+print("Network ID:", network_id)
+print("Host ID:", host_id)
