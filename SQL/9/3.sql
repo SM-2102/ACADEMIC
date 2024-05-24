@@ -1,15 +1,17 @@
-DECLARE cursor c1 IS
-	SELECT ENAME,SAL
-	FROM EMP
-	ORDER BY SAL DESC;
-	name varchar(10);
-	salary number(6);
+DECLARE
+	CURSOR ename_details IS
+  	SELECT EMPNAME AS ENAME FROM 
+	(SELECT EMPNAME, SALARY, ROW_NUMBER() OVER (ORDER BY SALARY DESC) AS salary_rank FROM EMP) 
+	WHERE salary_rank <= 7;
+	ENAME VARCHAR2(30);
 BEGIN
-	OPEN c1;
-	LOOP
-		fetch c1 into name,salary;
-		exit when c1 % rowcount > 7;
-		DBMS.OUTPUT.PUTLINE(name || '   ' || salary);
-	END LOOP;
+  	DBMS_OUTPUT.PUT_LINE('7 Employees with maximum salary:') ;
+  	OPEN ename_details;
+  	LOOP
+  		FETCH ename_details INTO ENAME;
+  		EXIT WHEN ename_details%NOTFOUND;
+  		DBMS_OUTPUT.PUT_LINE(ENAME);
+  	END LOOP ;
+  	CLOSE ename_details;
 END;
 /

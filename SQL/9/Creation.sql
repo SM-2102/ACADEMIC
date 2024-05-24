@@ -1,38 +1,34 @@
-CREATE table DEPT(
-	DEPTNO number(2),
-	DNAME varchar(15),
-	LOC varchar(15),
-	PRIMARY KEY(DEPTNO));
+CREATE TABLE EMP(
+  EMPNO NUMBER(5) PRIMARY KEY,
+  EMPNAME VARCHAR2(30),
+  SALARY NUMBER(10),
+  OFFICE VARCHAR2(20),
+  EMPPOST VARCHAR2(20),
+  HIRE DATE,
+  GRADE NUMBER(1) CHECK (GRADE BETWEEN 1 AND 5)
+);
 
-INSERT into DEPT VALUES(10,'Accounting','New York');
-INSERT into DEPT VALUES(20,'Research','Dallas');
-INSERT into DEPT VALUES(30,'Sales','Chicago');
-INSERT into DEPT VALUES(40,'Operations','Boston');
 
-CREATE table EMP(
-	EMPNO number(4),
-	ENAME varchar(10),
-	JOB char(10),
-	MGR number(4),
-	HIREDATE date,
-	SAL number(6),
-	COMM number(6),
-	DEPTNO number(2),
-	GRADE number(1),
-	PRIMARY KEY(EMPNO),
-	FOREIGN KEY(DEPTNO) references DEPT(DEPTNO));
+CREATE TABLE BONUS(
+  BID NUMBER(5) PRIMARY KEY,
+  BAMT NUMBER(10),
+  EMPNO NUMBER(5),
+  FOREIGN KEY (EMPNO) REFERENCES EMP(EMPNO)
+);
 
-INSERT into EMP VALUES(7369,'Smith','Clerk',7902,'17-dec-80',800,NULL,20,5);
-INSERT into EMP	VALUES(7499, 'Allen','Salesman', 7698,'20-feb-81', 1600, 300, 30,4);
-INSERT into EMP	VALUES(7521, 'Ward','Salesman', 7698,'22-feb-81', 1250, 500, 30,4);
-INSERT into EMP	VALUES(7566, 'Jones','Manager', 7839,'2-apr-81', 2975,NULL, 20,3);
-INSERT into EMP	VALUES(7654, 'Martin','Salesman', 7698,'28-sep-81', 1250 ,1400, 30,4);
-INSERT into EMP	VALUES(7698, 'Blake','Manager', 7839,'1-may-81', 2850,NULL, 30,3);
-INSERT into EMP	VALUES(7782, 'Clark','Manager', 7839,'9-jun-81', 2450 ,NULL,10,3);
-INSERT into EMP	VALUES(7788, 'Scott','Analyst', 7566,'9-dec-82', 3000,NULL, 20,2);
-INSERT into EMP	VALUES(7839, 'King','President',NULL,'17-nov-81', 5000,NULL, 10,1);
-INSERT into EMP	VALUES(7844, 'Turner','Salesman', 7698,'8-sep-81', 1500 ,0, 30,4);
-INSERT into EMP	VALUES(7876, 'Adams','Clerk',7788,'12-jan-83', 1100,NULL, 20,5);
-INSERT into EMP	VALUES(7900, 'James','Clerk', 7698, '3-dec-81', 950,NULL, 30,5);
-INSERT into EMP	VALUES(7902, 'Ford','Analyst', 7566, '4-dec-81', 3000,NULL, 20,2);
-INSERT into EMP	VALUES(7934, 'Miller','Clerk', 7782, '23-jan-82', 1300,NULL,10,5);
+
+INSERT INTO EMP VALUES (1, 'John Doe', 50000, 'New York', 'Manager',  '01-JAN-1981','DD-MON-YYYY', 4);
+INSERT INTO EMP VALUES (2, 'Jane Smith', 60000, 'Los Angeles', 'Developer','15-FEB-1982', 'DD-MON-YYYY', 3);
+INSERT INTO EMP VALUES (3, 'Michael Johnson', 55000, 'Chicago', 'Analyst','20-MAR-1981', 'DD-MON-YYYY', 5);
+INSERT INTO EMP VALUES (4, 'Emily Brown', 48000, 'Houston', 'Assistant','10-APR-1983', 'DD-MON-YYYY', 2);
+INSERT INTO EMP VALUES (5, 'Christopher Lee', 52000, 'San Francisco','Designer','05-MAY-1981', 'DD-MON-YYYY', 4);
+INSERT INTO EMP VALUES (6, 'Amanda Wilson', 58000, 'Seattle', 'Manager','15-JUN-1984', 'DD-MON-YYYY', 3);
+INSERT INTO EMP VALUES (7, 'David Martinez', 51000, 'Boston', 'Developer','25-JUL-1981', 'DD-MON-YYYY', 5);
+INSERT INTO EMP VALUES (8, 'Sarah Taylor', 53000, 'Miami', 'Analyst','30-AUG-1985', 'DD-MON-YYYY', 4);
+INSERT INTO EMP VALUES (9, 'Daniel Anderson', 59000, 'Dallas', 'Assistant','10-SEP-1981', 'DD-MON-YYYY', 2);
+INSERT INTO EMP VALUES (10, 'Jessica Garcia', 54000, 'Phoenix', 'Designer','20-OCT-1986', 'DD-MON-YYYY', 3);
+INSERT INTO EMP VALUES (11, 'James Rodriguez', 56000, 'Atlanta', 'Manager','01-NOV-1981', 'DD-MON-YYYY', 4);
+INSERT INTO EMP VALUES (12, 'Ashley Hernandez', 60000, 'Denver', 'Developer','05-DEC-1987', 'DD-MON-YYYY', 5);
+INSERT INTO EMP VALUES (13, 'Matthew Lewis', 52000, 'Philadelphia', 'Analyst','10-JAN-1981', 'DD-MON-YYYY', 3);
+INSERT INTO EMP VALUES (14, 'Olivia Clark', 57000, 'Detroit', 'Assistant','15-FEB-1988', 'DD-MON-YYYY', 4);
+INSERT INTO EMP VALUES (15, 'Ethan Adams', 58000, 'San Diego', 'Designer','20-MAR-1981', 'DD-MON-YYYY', 2);
