@@ -10,7 +10,9 @@ SELECT * from Sales_order where Order_date like '%-JAN-%';
 
 SELECT * from Sales_order where Client_no in ('C00001','C00002');
 
-SELECT * FROM Sales_order_details p JOIN Product_master pp ON p.Product_no = pp.Product_no where p.Product_rate > 2000 AND p.Product_rate <= 5000;
+SELECT * FROM Sales_order_details p JOIN Product_master pp 
+ON p.Product_no = pp.Product_no 
+where p.Product_rate > 2000 AND p.Product_rate <= 5000;
 
 SELECT Product_no,Product_rate * 0.15 AS new_price FROM Sales_order_details WHERE Product_rate > 1500;
 
