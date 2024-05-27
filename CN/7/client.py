@@ -6,7 +6,7 @@ server_port = 12345
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client_socket.connect((server_ip, server_port))
 
-message = "Hello, From Server!"
+message = "Hello, Echo Server!"
 
 client_socket.sendall(message.encode())
 response = client_socket.recv(1024).decode()

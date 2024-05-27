@@ -15,6 +15,7 @@ while True:
     print("Client connected from", client_address)
 
     message = client_socket.recv(1024).decode()
+    print(message)
     client_socket.sendall(message.encode())
     client_socket.close()
 
