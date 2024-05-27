@@ -20,7 +20,7 @@ def find_network_host(ip_address):
     return network_id, host_id
  
 # Driver Code
-ip_address = "106.255.255.6/20"
+ip_address = "192.168.1.100/24"
 network_id, host_id = find_network_host(ip_address)
 print("Network ID:", network_id)
 print("Host ID:", host_id)
