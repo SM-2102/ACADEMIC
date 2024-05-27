@@ -1,24 +1,29 @@
-import ipaddress
- 
-def calculate_subnet_info(ip_address, subnet): 
-    try:
-        # Validate IP address using ipaddress library
-        network = ipaddress.ip_interface(f"{ip_address}/{subnet}")
-    except (ValueError, ipaddress.AddressValueError) as e:
-        raise ValueError(f"Invalid IP address or Subnet: {e}")
- 
-    subnet_mask = str(network.netmask)
-    subnetwork_address = str(network.network)
- 
-    return subnet_mask, subnetwork_address
- 
- 
-ip_address = input("Enter an IP address (e.g., 192.168.1.0): ")
-subnet = int(input("Enter the Subnet (e.g., 24): "))
- 
-try:
-        subnet_mask, subnetwork_address = calculate_subnet_info(ip_address, subnet)
-        print(f"Subnet Mask: {subnet_mask}")
-        print(f"Subnetwork Address: {subnetwork_address}")
-except ValueError as e:
-        print(f"Error: {e}")
+def mask(ip):
+    if(ip >=0 and ip<=127):
+        return [255,0,0,0]
+    if(ip >=128 and ip<=191):
+        return [255,255,0,0]
+    if(ip >=192 and ip<=223):
+        return [255,255,255,0]
+    if(ip >=224 and ip<=255):
+        return [0,0,0,0]
+    else:
+        return None
+    
+ip_address = input("Enter I.P. Address : ")
+ip = ip_address.split('.')
+for i in ip:
+    if int(i) < 0 or int(i) > 255 : 
+        print ("Invalid IP address")
+        exit
+ip = [int(i) for i in ip]
+subnet = mask(ip[0])
+if subnet == None:
+    print("No valid subnet")
+else:
+    sub = [str(i) for i in subnet]
+    print("Subnet mask :",'.'.join(sub))
+    print(f'Subnet address : {ip[0]&subnet[0]}.{ip[1]&subnet[1]}.{ip[2]&subnet[2]}.{ip[3]&subnet[3]}')
+
+
+    
