@@ -15,13 +15,13 @@ def mod2div(dividend, divisor):
         if temp[0] == '1':
             temp = xor(temp,divisor)+dividend[pick]
         else:
-            temp = xor(temp,'0'*pick)+dividend[pick]
+            temp = xor('0'*pick,temp)+dividend[pick]
         pick = pick+1
 
     if temp[0] == '1':
        temp = xor(temp,divisor)
     else:
-        temp = xor(temp,'0'*pick)
+        temp = xor('0'*pick,temp)
 
     return temp
 
