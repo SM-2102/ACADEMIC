@@ -1,6 +1,6 @@
-def xor(a, b):
+def xor(a,b):
     result = []
-    for i in range(1, len(b)):
+    for i in range(1,len(b)):
         if a[i] == b[i]:
             result.append('0')
         else:
@@ -9,41 +9,39 @@ def xor(a, b):
 
 def mod2div(dividend, divisor):
     pick = len(divisor)
-    tmp = dividend[0 : pick]
+    temp = dividend[0:pick]
 
-    while pick < len(dividend):
-        if tmp[0] == '1':
-            tmp = xor(divisor, tmp) + dividend[pick]
+    while(pick<len(dividend)):
+        if temp[0] == '1':
+            temp = xor(temp,divisor)+dividend[pick]
         else:
-            tmp = xor('0'*pick, tmp) + dividend[pick]
-        pick += 1
+            temp = xor(temp,'0'*pick)+dividend[pick]
+        pick = pick+1
 
-    if tmp[0] == '1':
-        tmp = xor(divisor, tmp)
+    if temp[0] == '1':
+       temp = xor(temp,divisor)
     else:
-        tmp = xor('0'*pick, tmp)
+        temp = xor(temp,'0'*pick)
 
-    return tmp
+    return temp
 
-def encodeData(data, key):
-    l_key = len(key)
-    appended_data = data + '0'*(l_key-1)
-    remainder = mod2div(appended_data, key)
-    codeword = data + remainder
-    return codeword
-
-def decodeData(data, key):
-    remainder = mod2div(data, key)
-    return remainder
+def encodeData(data,div):
+    div_len = len(div)
+    data_send = data+'0'*(div_len-1)
+    remainder = mod2div(data_send,div)
+    return data+remainder
+    
+def decodeData(data,div):
+    return mod2div(data,div)
 
 data = input("Enter data : ")
-key = input("Enter divisor : ")
+div = input("Enter divisor : ")
 
-encoded_data = encodeData(data, key)
+encoded_data = encodeData(data, div)
 print("Data sent :", encoded_data)
 
 received = input("Enter received data : ")
-remainder = decodeData(received, key)
+remainder = decodeData(received, div)
 
 if '1' in remainder:
     print("Error detected.")
