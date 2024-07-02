@@ -1,4 +1,4 @@
-/* searh a pattern of characters within a given string */
+/* search a pattern of characters within a given string */
 
 #include<stdio.h>
 #include<string.h>

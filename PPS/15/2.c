@@ -1,5 +1,3 @@
-https://aviationtale.blogspot.com/2021/03/no-1wb-air-sqn-ncc-how-to-join-contact.html?m=1/* merge sort */
-
 #include <stdio.h>
 
 void merge(int arr[], int l, int m, int r)
